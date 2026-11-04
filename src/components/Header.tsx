@@ -1,14 +1,16 @@
-import { Heart, Menu, Bell, User, Globe } from 'lucide-react'
+import { Bell, Globe, Menu, User, Heart } from 'lucide-react'
 import { HTMLAttributes } from 'react'
 import { useLang } from '../context/LanguageContext'
+import type { UserRole } from './Navigation'
 
 interface HeaderProps extends HTMLAttributes<HTMLDivElement> {
-  userRole: 'older-adult' | 'caregiver'
+  userRole: UserRole
   onMenuToggle?: () => void
   isMenuOpen?: boolean
+  onChangeRole?: () => void
 }
 
-export const Header = ({ userRole, onMenuToggle, isMenuOpen }: HeaderProps) => {
+export const Header = ({ userRole, onMenuToggle, isMenuOpen, onChangeRole }: HeaderProps) => {
   const { t, lang, setLang } = useLang()
 
   return (
@@ -30,7 +32,7 @@ export const Header = ({ userRole, onMenuToggle, isMenuOpen }: HeaderProps) => {
             </div>
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             <button className="p-2 rounded-full text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500">
               <Bell className="w-5 h-5" />
             </button>
@@ -45,6 +47,15 @@ export const Header = ({ userRole, onMenuToggle, isMenuOpen }: HeaderProps) => {
             >
               <Globe className="w-5 h-5" />
             </button>
+            {onChangeRole && (
+              <button
+                onClick={onChangeRole}
+                className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-primary-600 bg-primary-50 border border-primary-100 hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors"
+              >
+                <User className="w-3 h-3" />
+                <span className="hidden sm:inline">{t('changeRole')}</span>
+              </button>
+            )}
             <div className="hidden md:block">
               <span className="text-sm text-gray-600">
                 {userRole === 'older-adult' ? t('olderAdult') : t('caregiver')}

@@ -1,43 +1,58 @@
-import { NavLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Heart, Users } from 'lucide-react'
 import { useLang } from '../context/LanguageContext'
 
-export const Navigation = () => {
+export type UserRole = 'older-adult' | 'caregiver'
+
+interface RolePickerProps {
+  setRole: (role: UserRole) => void
+}
+
+// Full-screen role choice shown only when no role has been selected yet.
+// Once a role is chosen, App hides this and shows the normal app navigation.
+export const RolePicker = ({ setRole }: RolePickerProps) => {
   const { t } = useLang()
+  const navigate = useNavigate()
+
+  const pickRole = (role: UserRole, path: string) => {
+    setRole(role)
+    navigate(path, { replace: true })
+  }
 
   return (
-    <nav className="bg-white shadow-soft border-b border-gray-200 sticky top-16 z-30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex space-x-8">
-          <NavLink
-            to="/older-adult/my-day"
-            className={({ isActive }) =>
-              `flex items-center space-x-2 py-4 px-1 border-b-2 transition-colors ${
-                isActive
-                  ? 'border-primary-600 text-primary-700'
-                  : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
-              }`
-            }
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="max-w-md w-full px-6 text-center">
+        <div className="mb-8">
+          <div className="flex items-center justify-center gap-2 text-primary-600 mb-4">
+            <Heart className="w-8 h-8" />
+            <h1 className="text-2xl font-bold text-gray-900">{t('appName')}</h1>
+          </div>
+          <h2 className="text-lg font-medium text-gray-900 mb-2">
+            {t('selectYourRole')}
+          </h2>
+          <p className="text-sm text-gray-500 mb-6">
+            {t('rolePreferenceSaved')}
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <button
+            onClick={() => pickRole('older-adult', '/older-adult/my-day')}
+            className="flex w-full items-center justify-center space-x-3 px-5 py-4 rounded-2xl border-2 border-primary-600 bg-primary-50 text-primary-700 font-semibold text-base shadow-sm hover:bg-primary-100 transition-all"
           >
             <Heart className="w-5 h-5" />
-            <span className="font-medium">{t('olderAdult')}</span>
-          </NavLink>
+            <span>{t('olderAdult')}</span>
+          </button>
 
-          <NavLink
-            to="/caregiver/overview"
-            className={({ isActive }) =>
-              `flex items-center space-x-2 py-4 px-1 border-b-2 transition-colors ${
-                isActive
-                  ? 'border-primary-600 text-primary-700'
-                  : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
-              }`
-            }
+          <button
+            onClick={() => pickRole('caregiver', '/caregiver/overview')}
+            className="flex w-full items-center justify-center space-x-3 px-5 py-4 rounded-2xl border-2 border-gray-200 bg-white text-gray-700 font-semibold text-base shadow-sm hover:bg-gray-50 transition-all"
           >
             <Users className="w-5 h-5" />
-            <span className="font-medium">{t('caregiver')}</span>
-          </NavLink>
+            <span>{t('caregiver')}</span>
+          </button>
         </div>
       </div>
-    </nav>
+    </div>
   )
 }

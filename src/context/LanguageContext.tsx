@@ -15,7 +15,11 @@ const translations: Record<string, Record<Lang, string>> = {
   // Role names
   olderAdult: { en: 'Older Adult', fa: 'سالمند' },
   caregiver: { en: 'Caregiver', fa: 'مراقب' },
-  // Navigation
+  // Navigation / role
+  chooseRole: { en: 'Choose your role', fa: 'نقش خود را انتخاب کنید' },
+  selectYourRole: { en: 'Select your role', fa: 'نقش خود را انتخاب کنید' },
+  rolePreferenceSaved: { en: 'This preference is saved on this device.', fa: 'این ترجیح در این دستگاه ذخیره می‌شود.' },
+  changeRole: { en: 'Change role', fa: 'تغییر نقش' },
   myDay: { en: 'My Day', fa: 'روز من' },
   viewCalendar: { en: 'View Calendar', fa: 'مشاهده تقویم' },
   medications: { en: 'Medications', fa: 'داروها' },

@@ -96,8 +96,12 @@ Modified:
 - `package.json` — dev/build/preview scripts for demo and beta
 - `index.html` — React app shell (entry for both builds)
 - `src/main.tsx` — wrapped with `CareProvider` and `LanguageProvider`
+- `src/App.tsx` — manages chosen role in localStorage (`carely_role`); shows full-screen `RolePicker` when no role chosen, otherwise renders role-specific routes; HashRouter kept
+- `src/components/Navigation.tsx` — rewritten as `RolePicker` full-screen role choice (Older Adult / Caregiver); hidden once a role is selected
+- `src/components/Header.tsx` — added "Change role" button to switch roles from the top bar
+- `src/components/Layout.tsx` — accepts and forwards `onChangeRole` to Header
 - `src/pages/older-adult/Medications.tsx` — added Reset Demo Data control (demo mode only)
-- `src/context/LanguageContext.tsx` — added `resetDemoData`, `confirmResetDemo` translation keys
+- `src/context/LanguageContext.tsx` — added `resetDemoData`, `confirmResetDemo`, `selectYourRole`, `rolePreferenceSaved`, `changeRole` translation keys
 
 ### Shared State Architecture (CareContext)
 

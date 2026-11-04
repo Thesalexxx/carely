@@ -6,9 +6,10 @@ import { useState, useEffect } from 'react'
 
 interface LayoutProps {
   userRole: 'older-adult' | 'caregiver'
+  onChangeRole?: () => void
 }
 
-export const Layout = ({ userRole }: LayoutProps) => {
+export const Layout = ({ userRole, onChangeRole }: LayoutProps) => {
   const isMobile = useIsMobile()
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const location = useLocation()
@@ -24,6 +25,7 @@ export const Layout = ({ userRole }: LayoutProps) => {
         userRole={userRole}
         onMenuToggle={() => setIsSidebarOpen((prev) => !prev)}
         isMenuOpen={isSidebarOpen && isMobile}
+        onChangeRole={onChangeRole}
       />
       <div className="flex">
         {!isMobile && <Sidebar userRole={userRole} />}
