@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Carely - A healthcare companion for older adults and caregivers" />
+    <title>Carely — healthcare companion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { height: 100%; }
+      body {
+        font-family: 'Inter', 'Vazirmatn', system-ui, -apple-system, sans-serif;
+        background: #f8fafc;
+        color: #0f172a;
+        line-height: 1.5;
+      }
+      a { color: #2563eb; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .container { max-width: 880px; margin: 0 auto; padding: 40px 20px; text-align: center; }
+      .brand { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px; display: inline-block; }
+      .tagline { color: #64748b; font-size: 1.125rem; margin-bottom: 48px; }
+      .cards { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+      .card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 32px 28px;
+        width: 340px;
+        text-align: left;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-color: #2563eb; }
+      .card h2 { font-size: 1.25rem; margin-bottom: 10px; font-weight: 700; }
+      .card h2 .tag { font-size: 0.8rem; font-weight: 600; padding: 2px 10px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
+      .demo-tag { background: #dbeafe; color: #1e40af; }
+      .beta-tag { background: #f0fdf4; color: #166534; }
+      .card p { color: #64748b; font-size: 0.95rem; margin-bottom: 22px; line-height: 1.6; }
+      .btn {
+        display: inline-block;
+        background: #2563eb;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .btn:hover { background: #1d4ed8; }
+      .divider { margin: 40px 0; border: none; border-top: 1px solid #e2e8f0; }
+      .footer { color: #64748b; font-size: 0.875rem; margin-top: 32px; }
+      .rtl-note { font-size: 0.85rem; color: #64748b; margin-top: 14px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="brand">Carely</div>
+      <div class="tagline">یک همراه مراقبت درمانی برای سالمندان و مراقبان</div>
+
+      <div class="cards">
+        <div class="card" lang="fa" dir="rtl">
+          <h2>نمایشی (Demo) <span class="tag demo-tag">داده‌های مصنوعی</span></h2>
+          <p>نسخه کامل پر شده با داده‌های مصنوعی فارسی. داروها، یادآورها، فعالیت‌های روزانه، ثبت‌های وضعیت و ساعت هوشمند شبیه‌سازی‌شده آماده‌اند. برای درک نحوهٔ کار Carely استفاده کنید.</p>
+          <a href="./demo/" class="btn">بازنمایی نمایشی</a>
+        </div>
+
+        <div class="card" lang="fa" dir="rtl">
+          <h2>بتا (Beta) <span class="tag beta-tag">خالی برای شما</span></h2>
+          <p>نسخه خالی برای تلاش از برنامه و افزودن داده‌های خودتان. دارو، فعالیت و ثبت وضعیت خود را بسازید. هیچ دادهٔ مصنوعی وجود ندارد.</p>
+          <a href="./beta/" class="btn">شروع بتا</a>
+        </div>
+      </div>
+
+      <hr class="divider" />
+      <div class="footer">
+        Carely — نمونهٔ آموزشی/آزمانی. داده‌های نمایشی ساختگی است.
+        <div class="rtl-note">حافظهٔ مرورگر (localStorage) جداگانه برای نمایشی و بتا است؛ تغییرات در یکی بر دیگری اثر نمی‌گذارد.</div>
+        <div class="rtl-note">رابط فارسی از چپ‌به‌راست (RTL) پشتیبانی می‌کند.</div>
+      </div>
+    </div>
+  </body>
+</html>
